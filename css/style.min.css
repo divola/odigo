@@ -58,15 +58,13 @@ a:visited {
   text-decoration: none;
 }
 
-:focus,
-:active,
-a:focus,
-a:active {
-  outline: none;
-}
-
 input::-ms-clear {
   display: none;
+}
+
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54;
 }
 
 input,
@@ -75,10 +73,6 @@ button,
 textarea,
 optgroup {
   font-family: inherit;
-}
-
-::-moz-placeholder {
-  opacity: 1;
 }
 
 button {
@@ -91,6 +85,13 @@ button::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
 }
 
 [data-aos][data-aos][data-aos-duration="50"],
@@ -3269,8 +3270,6 @@ video::-webkit-media-text-track-display {
 }
 
 body {
-  font-weight: 400;
-  font-size: 16px;
   line-height: 24px;
   color: #102746;
   background-color: #fff;
@@ -3297,12 +3296,18 @@ body {
   padding: 12px 19px;
   line-height: 19px;
   background-color: #1b7dff;
-  -webkit-transition: all 0.5s ease 0s;
-  transition: all 0.5s ease 0s;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
 }
 
 .btn:hover {
   background-color: #0063e7;
+}
+
+.btn:focus {
+  -webkit-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5), 0 0 0 4px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5), 0 0 0 4px rgba(255, 255, 255, 0.5);
+  outline: none;
 }
 
 .link-more {
@@ -3513,10 +3518,11 @@ body {
 }
 
 .menu__list-link {
+  position: relative;
   display: inline-block;
   font-size: 18px;
   color: #fff;
-  position: relative;
+  outline: none;
 }
 
 .menu__list-link:not(.sign-in-link)::before {
@@ -3600,7 +3606,7 @@ body {
   align-items: center;
 }
 
-.search-form__input {
+.search-form__label {
   -webkit-box-flex: 0;
   -ms-flex: 0 1 297px;
   flex: 0 1 297px;
@@ -3612,7 +3618,7 @@ body {
   cursor: text;
 }
 
-.search-form__input::before {
+.search-form__label::before {
   content: "";
   position: absolute;
   top: 0;
@@ -3621,17 +3627,17 @@ body {
   height: 20px;
   border: 2px solid #fff;
   border-radius: 50%;
-  margin-top: 3px;
+  margin-top: 1px;
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   cursor: pointer;
 }
 
-.search-form__input:focus-within::before {
+.search-form__label:focus-within::before {
   background-color: #1b7dff;
 }
 
-.search-form__input input {
+.search-form__label input {
   font-weight: 500;
   font-size: 18px;
   background-color: transparent;
@@ -3639,24 +3645,53 @@ body {
   width: 100%;
 }
 
-.search-form__input input::-webkit-input-placeholder {
+.search-form__label input::-webkit-input-placeholder {
   color: inherit;
+  opacity: 1;
 }
 
-.search-form__input input::-moz-placeholder {
+.search-form__label input::-moz-placeholder {
   color: inherit;
+  opacity: 1;
 }
 
-.search-form__input input:-ms-input-placeholder {
+.search-form__label input:-ms-input-placeholder {
   color: inherit;
+  opacity: 1;
 }
 
-.search-form__input input::-ms-input-placeholder {
+.search-form__label input::-ms-input-placeholder {
   color: inherit;
+  opacity: 1;
 }
 
-.search-form__input input::placeholder {
+.search-form__label input::placeholder {
   color: inherit;
+  opacity: 1;
+}
+
+.search-form__label input:focus {
+  outline: none;
+}
+
+.search-form__label input:focus::-webkit-input-placeholder {
+  opacity: .54;
+}
+
+.search-form__label input:focus::-moz-placeholder {
+  opacity: .54;
+}
+
+.search-form__label input:focus:-ms-input-placeholder {
+  opacity: .54;
+}
+
+.search-form__label input:focus::-ms-input-placeholder {
+  opacity: .54;
+}
+
+.search-form__label input:focus::placeholder {
+  opacity: .54;
 }
 
 .search-form__btn {
@@ -3667,17 +3702,15 @@ body {
 
 .sign-in-button {
   position: relative;
-}
-
-.sign-in-button__link {
   font-size: 18px;
   color: #fff;
+  outline: none;
 }
 
-.sign-in-button__link::before,
-.sign-in-button__link::after,
-.sign-in-button__link span::before,
-.sign-in-button__link span::after {
+.sign-in-button::before,
+.sign-in-button::after,
+.sign-in-button span::before,
+.sign-in-button span::after {
   content: "";
   position: absolute;
   background-color: #fff;
@@ -3685,28 +3718,28 @@ body {
   transition: all 0.2s ease 0s;
 }
 
-.sign-in-button__link::before {
+.sign-in-button::before {
   left: -13px;
   bottom: -5px;
   width: 0;
   height: 1px;
 }
 
-.sign-in-button__link::after {
+.sign-in-button::after {
   right: -13px;
   top: -5px;
   width: 0;
   height: 1px;
 }
 
-.sign-in-button__link:hover::before,
-.sign-in-button__link:focus::before,
-.sign-in-button__link:hover::after,
-.sign-in-button__link:focus::after {
+.sign-in-button:hover::before,
+.sign-in-button:focus::before,
+.sign-in-button:hover::after,
+.sign-in-button:focus::after {
   width: calc(100% + 26px);
 }
 
-.sign-in-button__link span::before {
+.sign-in-button span::before {
   display: inline-block;
   left: -13px;
   top: -5px;
@@ -3716,7 +3749,7 @@ body {
   transition-delay: .2s;
 }
 
-.sign-in-button__link span::after {
+.sign-in-button span::after {
   display: inline-block;
   right: -13px;
   bottom: -5px;
@@ -3726,10 +3759,10 @@ body {
   transition-delay: .2s;
 }
 
-.sign-in-button__link span:hover::before,
-.sign-in-button__link span:hover::after,
-.sign-in-button__link:focus span::before,
-.sign-in-button__link:focus span::after {
+.sign-in-button span:hover::before,
+.sign-in-button span:hover::after,
+.sign-in-button:focus span::before,
+.sign-in-button:focus span::after {
   height: calc(100% + 10px);
 }
 
@@ -3770,6 +3803,8 @@ body {
   -webkit-box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.2);
   margin: 0 15px;
+  font-size: 14px;
+  text-align: center;
 }
 
 .sign-in__body a {
@@ -3794,6 +3829,7 @@ body {
   height: 20px;
   color: #b3b3b3;
   cursor: pointer;
+  background-color: #fff;
   -webkit-transition: all 0.5s ease 0s;
   transition: all 0.5s ease 0s;
 }
@@ -3871,16 +3907,7 @@ body {
   border: 0 !important;
 }
 
-.sign-in__restore {
-  display: inline-block;
-  width: 100%;
-  font-size: 14px;
-  text-align: center;
-}
-
 .sign-in__bottom {
-  font-size: 14px;
-  text-align: center;
   color: gray;
   padding: 15px 35px;
   border-top: 1px solid #ccc;
@@ -3981,6 +4008,8 @@ body {
 
 .benefits-item__link {
   margin-top: 39px;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
 }
 
 .inspiration__cards {
@@ -4404,7 +4433,7 @@ body {
     margin-right: 40px;
   }
 
-  .search-form__input {
+  .search-form__label {
     margin: 0 30px 0 0;
     padding-left: 30px;
   }
@@ -4432,7 +4461,7 @@ body {
     margin-right: 20px;
   }
 
-  .search-form__input input {
+  .search-form__label input {
     font-size: 17px;
   }
 
@@ -4534,14 +4563,14 @@ body {
     line-height: 52px;
   }
 
-  .search-form__input {
+  .search-form__label {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 47%;
     flex: 0 0 47%;
     margin: 0 0 30px 0;
   }
 
-  .search-form__input:first-child {
+  .search-form__label:first-child {
     margin: 0 30px 30px 0;
   }
 
@@ -4666,6 +4695,10 @@ body {
     color: #102746;
   }
 
+  .menu__list-link:focus {
+    border-bottom: 1px solid #7f7f7f;
+  }
+
   .menu__close {
     display: block;
     visibility: hidden;
@@ -4697,14 +4730,14 @@ body {
     line-height: 46px;
   }
 
-  .search-form__input {
+  .search-form__label {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     padding-left: 44px;
   }
 
-  .search-form__input:first-child {
+  .search-form__label:first-child {
     margin-right: 0;
   }
 
@@ -4863,6 +4896,25 @@ body {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    -webkit-animation-delay: -1ms !important;
+    animation-delay: -1ms !important;
+    -webkit-animation-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    -webkit-transition-duration: 0s !important;
+    transition-duration: 0s !important;
+    -webkit-transition-delay: 0s !important;
+    transition-delay: 0s !important;
   }
 }
 

@@ -15,47 +15,45 @@
       <div class="header__inner">
         <div class="header__top">
           <div class="header__column">
-            <a class="header__logo" href="index.html" rel="home"><img src="images/logo.svg" alt=""></a>
+            <a class="header__logo" href="index.html" rel="home" aria-label="home page"><img src="images/logo.svg" alt=""></a>
           </div>
           <div class="header__column">
-            <nav class="menu">
+            <nav class="menu" id="menu" aria-label="primary">
               <ul class="menu__list">
                 <li class="menu__list-item"><a class="menu__list-link" href="#">Articles</a></li>
                 <li class="menu__list-item"><a class="menu__list-link" href="#">Locations</a></li>
                 <li class="menu__list-item"><a class="menu__list-link" href="#">Videos</a></li>
               </ul>
-              <a class="menu__close" role="button" aria-hidden="true"></a>
+              <button class="menu__close" aria-label="close menu"></button>
             </nav>
-            <div class="sign-in-button" aria-hidden="true">
-              <a class="sign-in-button__link" href="register.html" role="button"><span>Sign in</span></a>
-            </div>
-            <button class="menu-icon" aria-hidden="true"></button>
+            <a class="sign-in-button" href="register.html" role="button"><span>Sign in</span></a>
+            <button class="menu-icon" aria-label="main menu"></button>
           </div>
-          <section class="sign-in" id="sign" aria-label="sign in">
+          <div class="sign-in" id="sign" role="dialog" aria-labelledby="dialogTitle">
             <div class="sign-in__body">
               <div class="sign-in__top">
-                <i class="sign-in__close"></i>
+                <button class="sign-in__close" aria-label="close"></button>
                 <img class="sign-in__avatar" src="images/avatar.jpg" alt="">
-                <div class="sign-in__title">Member Login</div>
-                <form action="#" method="POST" class="sign-in__form">
+                <div class="sign-in__title" id="dialogTitle">Member Login</div>
+                <form class="sign-in__form" action="#" method="POST" aria-label="login">
                   <input type="text" name="user_name" required placeholder="Username" autocomplete="off" aria-label="username">
                   <input type="password" name="user_pass" required placeholder="Password" aria-label="password">
-                  <input class="sign-in__btn btn" type="submit" role="button" value="Sign In"  aria-label="submit">
+                  <input class="sign-in__btn btn" type="submit" role="button" value="Sign In" aria-label="submit">
                 </form>
                 <a href="#" class="sign-in__restore">Forgot Password?</a>
               </div>
               <div class="sign-in__bottom">Don't have an account? <a href="#">Create one</a></div>
             </div>
-          </section>
+          </div>
         </div>
         <div class="header__bottom header-info">
           <h1 class="header-info__title">Discover Amazing places in Japan</h1>
           <p class="header-info__text">Jump off balcony, onto stranger's head. Chase ball of string hide when guests come over. Being gorgeous with belly side up i could pee on this if i had the energy but under the bed, for attack the child, open the door...</p>
           <form class="header-info__form search-form" role="search" aria-label="site">
-            <label class="search-form__input" for="todo">
+            <label class="search-form__label" for="todo">
               <input type="text" name="to-do" id="todo" placeholder="What would you like to do?" aria-label="What would you like to do?">
             </label>
-            <label class="search-form__input" for="togo">
+            <label class="search-form__label" for="togo">
               <input type="text" name="to-go" id="togo" placeholder="Where would you like to go?" aria-label="Where would you like to go?">
             </label>
             <button class="search-form__btn btn">Search</button>

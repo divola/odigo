@@ -13,22 +13,37 @@ $(function () {
   $('.menu-icon').on('click', function () {
     $('.header').addClass('show-menu');
     $.scrollLock(true);
+
+    // focus trap
+    var dialog = document.querySelector("#menu");
+    focusManager.capture(dialog);
+    $('#menu li:first-child a').focus();
   });
+
   $('.menu__close').on('click', function () {
     $('.header').removeClass('show-menu');
     $.scrollLock(false);
+
+    // focus on menu button after close menu
+    var menuButton = document.querySelector(".menu-icon");
+    focusManager.release(menuButton);
   });
 
   // 
-  // Sign In show/hide
+  // Modal show/hide
   // 
-  $('.sign-in-button__link').on('click', function () {
+  $('.sign-in-button').on('click', function () {
+    var openButton = document.querySelector(".sign-in-button");
+    var dialog = document.querySelector("#sign");
+
     $('.sign-in').addClass('show-sign-in');
     $.scrollLock(true);
+    focusManager.capture(dialog); // focus manager - trap focus in modal
 
     $('.sign-in__close').on('click', function () {
       $('.sign-in').removeClass('show-sign-in');
       $.scrollLock(false);
+      focusManager.release(openButton); // focus manager - set focus to the open button
     });
 
     // Focus after some time to fix conflict with addClass.
@@ -47,6 +62,7 @@ $(function () {
         if ($('.sign-in').hasClass('show-sign-in')) {
           $('.sign-in').removeClass('show-sign-in');
           $.scrollLock(false);
+          focusManager.release(openButton);
         }
       }
     });
